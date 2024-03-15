@@ -1,4 +1,3 @@
-```cpp
 #include <bits/stdc++.h>
 #define rep(i, a, n) for(auto i = a; i < n; i++)
 #define REP(i, a, n) for(auto i = a; i <= n; i++)
@@ -34,4 +33,3 @@ int main(void) {
     }
     cout << ((cache[n] & 1) ? "SK" : "CY");
 }
-```
