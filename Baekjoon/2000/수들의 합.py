@@ -6,7 +6,7 @@ cnt = 0
 
 s = 1
 e = 1
-sum = 0
+sum = e
 while(s <= e):
     if e == n:
         cnt+=1
