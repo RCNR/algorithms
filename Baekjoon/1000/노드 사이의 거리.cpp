@@ -1,5 +1,5 @@
 // 1240
-
+// 맨 처음 제출 때 메모리초과 발생 -> 원인 : 기존에 큐에 들어갔던 값이 또 큐에 들어감
 #include <bits/stdc++.h>
 #define FAST_IO ios_base::sync_with_stdio(false); cin.tie(0);  cout.tie(0);
 #define rep(i, a, n) for(auto i=a; i<n; i++)
