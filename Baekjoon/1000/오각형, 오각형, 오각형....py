@@ -1,6 +1,5 @@
 # 1964 오각형, 오각형, 오각형...
+# 더 빠르게
 n = int(input())
-res = 5
-for i in range(1, n):
-    res += (3*i + 4) % 45678
-print(res % 45678) 
+inside = n * (n+1) // 2 % 45678
+print(((inside * 3) + n + 1)% 45678) 
