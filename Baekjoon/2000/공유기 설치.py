@@ -16,19 +16,20 @@ def func(mid):
             pre = board[i]
     return cnt
 
-st = 0
-en = board[n-1]
+st = -1
+en = board[n-1] + 1
 res = 0
 
-while st <= en:
+while st + 1 < en:
     mid = (st + en) // 2
     shareCount = func(mid)
     
     if shareCount >= m:
         res = mid
-        st = mid + 1
+        st = mid 
     else:
-        en = mid - 1
+        en = mid 
+    # print(mid)
 
-print(res)
+print(st)
 
