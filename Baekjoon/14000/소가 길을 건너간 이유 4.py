@@ -33,3 +33,34 @@ for num in cow: # 소 개수 만큼 루프
         board.pop(cur) # 닭을 사용했으니 인덱스 cur의 위치에 있는 닭을 뺀다.
 
 print(cnt)
+
+
+# 우선순위 큐를 이용한 두번 째 방법
+import sys
+from heapq import *
+input = sys.stdin.readline
+
+C, N = map(int, input().split())
+chicken = list(int(input()) for _ in range(C))
+cow = [list(map(int, input().split())) for _ in range(N)]
+
+chicken.sort()
+cow.sort()
+
+idx = 0
+res = 0
+pq = []
+
+for num in chicken:
+    while idx < N and cow[idx][0] <= num:
+        heappush(pq, cow[idx][1]) # 소의 끝을 우선순위에 넣어줌
+        idx += 1
+    
+    while len(pq) != 0 and pq[0] < num: # 소의 끝이 닭보다 빠른 경우 불가능
+        heappop(pq)
+    
+    if len(pq) != 0:
+        res += 1
+        heappop(pq)
+
+print(res)
