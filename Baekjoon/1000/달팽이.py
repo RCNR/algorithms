@@ -1,70 +1,41 @@
-# 달팽이
+# 달팽이 1913
 
 num = int(input())
 k = int(input())
 
-board = [[0] * (num) for _ in range(num+2)]
+board = [[0] * num for _ in range(num)]
 
 cur_x = num // 2
 cur_y = num // 2
-
-res = []
-idx = 2
-
-
-def check(x, y):
-    if board[x][y] == k:
-        res.append(x)
-        res.append(y)
-
 board[cur_x][cur_y] = 1
-check(cur_x, cur_y)
 
+kx, ky = (cur_x, cur_y) if k == 1 else (-1, -1)
 
+# 위, 오른쪽, 아래, 왼쪽
+dx = [-1, 0, 1, 0]
+dy = [0, 1 ,0, -1]
 
-for i in range(1, num // 2 + 1):
-    
-    # ->
-    cur_x -= 1
-    for j in range(2 * i):
-        board[cur_x][cur_y + j] = idx
-        check(cur_x, cur_y + j)
-        idx += 1
-    cur_y += 2 * i - 1
+cnt = 2 # 채우는 숫자
+step = 1 # 현재 방향에서 몇 칸
+dir = 0
 
-    # down
-    cur_x += 1
-    for j in range(2 * i):
-        board[cur_x + j][cur_y] = idx
-        check(cur_x + j, cur_y)
+while cnt <= num * num:
+    for _ in range(2):
+        for _ in range(step):
+            
+            if cnt > num * num: break
 
-        idx += 1
-    cur_x += 2 * i - 1
+            cur_x += dx[dir]
+            cur_y += dy[dir]
+            board[cur_x][cur_y] = cnt
 
-    # <-
-    cur_y -= 1
-    for j in range(2 * i):
-        board[cur_x][cur_y - j] = idx
-        check(cur_x, cur_y - j)
+            if cnt == k: kx, ky = cur_x, cur_y
 
-        idx += 1
-    cur_y -= 2 * i - 1
+            cnt += 1
+        dir = (dir + 1) % 4
+    step += 1
 
-    # up
-    cur_x -= 1
-    for j in range(2 * i):
-        board[cur_x - j][cur_y] = idx
-        check(cur_x - j, cur_y)
+for li in board:
+    print(*li)
 
-        idx += 1
-    cur_x -= 2 * i - 1
-
-for i in range(num):
-    for j in range(num):
-        print(board[i][j], end = ' ')
-    print()
-    
-
-print(res[0] + 1, res[1] + 1)
-
-
+print(kx + 1, ky + 1)
