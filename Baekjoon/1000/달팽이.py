@@ -3,7 +3,7 @@
 num = int(input())
 k = int(input())
 
-board = [[0] * (num) for _ in range(num)]
+board = [[0] * (num) for _ in range(num+2)]
 
 cur_x = num // 2
 cur_y = num // 2
