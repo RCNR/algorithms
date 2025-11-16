@@ -30,18 +30,18 @@ class Solution {
         return -1;
     }
     
-    public boolean func(int x, int y, int M, String[][] park) {
-        
-        if (!(x + M - 1 < park.length) || !(y + M - 1 < park[x].length)) return false;
-        
-          for (int i = 0; i < M; i++) {
-              for (int j = 0; j < M; j++) {
-                    if (!park[x + i][y + j].equals("-1")) return false;
+    static boolean func(int x, int y, int M, String[][] park) {
 
-              } 
-          }
-          
-        return true;
+      // 범위에 맞지 않는 경우
+      if (!(x + M - 1 < park.length) || !(y + M - 1 < park[x].length)) return false;
+
+      for (int i = 0; i < M; i++) {
+          for (int j = 0; j < M; j++) {
+                if (!park[x + i][y + j].equals("-1")) return false;
+          } 
+      }
+        
+      return true;
     }
 }
 
